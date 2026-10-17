@@ -1,6 +1,9 @@
 import Clutter from 'gi://Clutter';
 import St from 'gi://St';
 
+const VERTICAL = Clutter.Orientation.VERTICAL;
+const HORIZONTAL = Clutter.Orientation.HORIZONTAL;
+
 import {
     formatTemperature,
     formatWind,
@@ -10,7 +13,7 @@ import {
 export class Forecast {
     constructor() {
         this.actor = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             x_expand: true,
             reactive: true,
             can_focus: true,
@@ -86,7 +89,7 @@ export class Forecast {
         this._scroll.hscrollbar_policy = St.PolicyType.NEVER;
 
         this._container = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             x_expand: true,
             y_expand: false,
             reactive: false,
@@ -129,7 +132,7 @@ export class Forecast {
                 continue;
 
             const dayBox = new St.BoxLayout({
-                vertical: true,
+                orientation: VERTICAL,
                 style_class: 'weatherpanel-forecast-card',
                 x_expand: true,
                 reactive: false,
@@ -162,7 +165,7 @@ export class Forecast {
 
             for (const entry of day.entries) {
                 const entryBox = new St.BoxLayout({
-                    vertical: true,
+                    orientation: VERTICAL,
                     style_class: 'weatherpanel-forecast-hour',
                     x_align: Clutter.ActorAlign.CENTER,
                     reactive: false,

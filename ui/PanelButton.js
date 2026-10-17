@@ -3,6 +3,9 @@ import St from 'gi://St';
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
+const VERTICAL = Clutter.Orientation.VERTICAL;
+const HORIZONTAL = Clutter.Orientation.HORIZONTAL;
+
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
@@ -221,7 +224,7 @@ export default class PanelButton {
         this._connectMenuSignals();
 
         this._root = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             style_class: 'weatherpanel-menu-root',
         });
 
@@ -237,21 +240,21 @@ export default class PanelButton {
         this.menu.addMenuItem(rootItem);
 
         this._cityItem = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             style_class: 'weatherpanel-city-box',
         });
 
         this._root.add_child(this._cityItem);
 
         this._currentItem = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             style_class: 'weatherpanel-current-box',
         });
 
         this._root.add_child(this._currentItem);
 
         this._forecastSection = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             style_class: 'weatherpanel-forecast-root',
         });
 
@@ -288,7 +291,7 @@ export default class PanelButton {
 
     _buildButtons() {
         this._buttonBox = new St.BoxLayout({
-            vertical: false,
+            orientation: HORIZONTAL,
             x_expand: true,
             style_class: 'weatherpanel-button-box',
         });
@@ -619,7 +622,7 @@ export default class PanelButton {
         ][this._settings.get_enum('pressure-unit')];
 
         const root = new St.BoxLayout({
-            vertical: false,
+            orientation: HORIZONTAL,
             x_expand: true,
         });
 
@@ -632,7 +635,7 @@ export default class PanelButton {
         });
 
         const textBox = new St.BoxLayout({
-            vertical: true,
+            orientation: VERTICAL,
             x_expand: true,
         });
 
